@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MegaLauncher</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="tutorial">Pulsa el boton longitud para decir la longitud a registrar y pulsa el boton latitud para decir la latitud /n Cuando este las dos coordenadas se lanzar la navegación </string>
+    <string name="longitud">Longitud</string>
+    <string name="latitud">Latitud</string>
+
+</resources>

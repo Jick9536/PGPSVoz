@@ -1,0 +1,33 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="10dip" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/tutorial"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/longitud"
+        android:layout_width="292dp"
+        android:layout_height="wrap_content"
+        android:text="@string/longitud" />
+
+    <Button
+        android:id="@+id/latitud"
+        android:layout_width="292dp"
+        android:layout_height="wrap_content"
+        android:text="@string/latitud" />
+
+    <ListView
+        android:id="@+id/lista_coordenadas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </ListView>
+
+</LinearLayout>
