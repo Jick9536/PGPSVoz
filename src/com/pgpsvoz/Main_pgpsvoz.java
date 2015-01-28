@@ -214,42 +214,47 @@ public class Main_pgpsvoz extends Activity
 	private void setListView(ArrayList<String> nBestView)
 	{
 	
-	
-		if(b_longitud==true)
+		if(coordenadas.get(0)!= "longitud" && coordenadas.get(1)!="latitud")
 		{
-			// Instantiates the array adapter to populate the listView
-			//Transformar coordenadas al formato estandar
-			longitud=transforma_coordenadas(nBestView.get(1));
-			coordenadas.set(0, longitud);
-			
-			ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, coordenadas);
-	        ListView listView = (ListView) findViewById(R.id.lista_coordenadas);
-	    	listView.setAdapter(adapter);
-	    	
-	    	b_longitud=false;
+			//Carga el activity al tener la latitud y longitud correctas
+			Intent i = new Intent(this, Main_navegacion.class);
+			i.putExtra(longitud,latitud);
+			coordenadas.add(longitud);
+			coordenadas.add(latitud);
+			startActivity(i);
 		}
 		else
 		{
-			if(b_latitud==true)
+			if(b_longitud==true)
 			{
+				// Instantiates the array adapter to populate the listView
 				//Transformar coordenadas al formato estandar
-				latitud=transforma_coordenadas(nBestView.get(0));
-				coordenadas.set(1, latitud);
-				
+				longitud=transforma_coordenadas(nBestView.get(1));
+				coordenadas.set(0, longitud);
+			
 				ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, coordenadas);
-				
 				ListView listView = (ListView) findViewById(R.id.lista_coordenadas);
-			    listView.setAdapter(adapter);
-			    b_longitud=false;
+				listView.setAdapter(adapter);
+	    	
+				b_longitud=false;
+			}
+			else
+			{
+				if(b_latitud==true)
+				{
+					//Transformar coordenadas al formato estandar
+					latitud=transforma_coordenadas(nBestView.get(0));
+					coordenadas.set(1, latitud);
+				
+					ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, coordenadas);
+				
+					ListView listView = (ListView) findViewById(R.id.lista_coordenadas);
+					listView.setAdapter(adapter);
+					b_longitud=false;
 			    
-			    //No me cambia de activity??
-			    //Intent i = new Intent(this, Main_navegacion.class);
-		        //i.putExtra(" ", " ");
-		        //startActivity(i);
+				}
 			}
 		}
-		
-		
-
 	}
 }
+
