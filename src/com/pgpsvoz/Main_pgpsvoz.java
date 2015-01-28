@@ -45,8 +45,12 @@ public class Main_pgpsvoz extends Activity
 	private static final String LOGTAG = "ASRBEGIN";
 	private static int ASR_CODE = 123;
 	//String con la longitud y la laitud corregidas
-	private String latitud;
-	private String longitud;
+	private String latitud="latitud";
+	private String longitud="longitud";
+	
+	//Arraylist coordenadas
+	ArrayList<String> coordenadas = new ArrayList<String>();
+	
 	//Cerrojos
 	private boolean b_latitud;
 	private boolean b_longitud;
@@ -59,6 +63,8 @@ public class Main_pgpsvoz extends Activity
 		//Shows in the GUI the default values for the language model and the maximum number of recognition results
 		setSpeakButtonLongitud();
 		setSpeakButtonLatitud();
+		coordenadas.add(longitud);
+		coordenadas.add(latitud);
 		
 	}
 	
@@ -183,18 +189,41 @@ public class Main_pgpsvoz extends Activity
             }
         }
 	}
+	
+	private String transforma_coordenadas(String cadena)
+	{
+		String aux;
+		//Cadena sin espacio
+		aux=cadena.replaceAll("coma", ".");
+		aux=aux.replaceAll(",",".");
+		aux=aux.replaceAll("norte","N");
+		aux=aux.replaceAll("oeste", "W");
+		aux=aux.replaceAll("grados", "º");
+		aux=aux.replaceAll("grado", "º");
+		aux=aux.replaceAll("minutos", "'");
+		aux=aux.replaceAll("segundos", "''");
+		aux=aux.replaceAll(" " ,"");
+		aux=aux.trim();
+		return aux;
+	}
+	
 	/**
 	 * Includes the recognition results in the list view
 	 * @param nBestView list of matches
 	 */
-	private void setListView(ArrayList<String> nBestView){
-		
+	private void setListView(ArrayList<String> nBestView)
+	{
+	
+	
 		if(b_longitud==true)
 		{
 			// Instantiates the array adapter to populate the listView
-	        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, nBestView);
-	        longitud=nBestView.get(0);
-	    	ListView listView = (ListView) findViewById(R.id.lista_coordenadas);
+			//Transformar coordenadas al formato estandar
+			longitud=transforma_coordenadas(nBestView.get(1));
+			coordenadas.set(0, longitud);
+			
+			ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, coordenadas);
+	        ListView listView = (ListView) findViewById(R.id.lista_coordenadas);
 	    	listView.setAdapter(adapter);
 	    	
 	    	b_longitud=false;
@@ -203,16 +232,20 @@ public class Main_pgpsvoz extends Activity
 		{
 			if(b_latitud==true)
 			{
-				latitud=nBestView.get(0);
-				ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, nBestView);
-			    ListView listView = (ListView) findViewById(R.id.lista_coordenadas);
+				//Transformar coordenadas al formato estandar
+				latitud=transforma_coordenadas(nBestView.get(0));
+				coordenadas.set(1, latitud);
+				
+				ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, coordenadas);
+				
+				ListView listView = (ListView) findViewById(R.id.lista_coordenadas);
 			    listView.setAdapter(adapter);
 			    b_longitud=false;
 			    
 			    //No me cambia de activity??
-			    /*Intent i = new Intent(this, Main_navegacion.class);
+			    //Intent i = new Intent(this, Main_navegacion.class);
 		        //i.putExtra(" ", " ");
-		        startActivity(i);*/
+		        //startActivity(i);
 			}
 		}
 		

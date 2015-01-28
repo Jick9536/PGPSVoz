@@ -1649,7 +1649,7 @@ containing a value of this type.
         public static final int default_activity_button=0x7f050024;
         public static final int dialog=0x7f050010;
         public static final int disableHome=0x7f05000a;
-        public static final int distanceText=0x7f050042;
+        public static final int distanceText=0x7f050041;
         public static final int dropdown=0x7f050011;
         public static final int edit_query=0x7f050033;
         public static final int end=0x7f050014;
@@ -1660,14 +1660,14 @@ containing a value of this type.
         public static final int icon=0x7f050026;
         public static final int ifRoom=0x7f05000c;
         public static final int image=0x7f050023;
-        public static final int imageViewCompass=0x7f050043;
+        public static final int imageViewCompass=0x7f050042;
         public static final int latitud=0x7f050046;
         public static final int latitudeText=0x7f050040;
         public static final int listMode=0x7f050002;
         public static final int list_item=0x7f050025;
         public static final int lista_coordenadas=0x7f050047;
         public static final int longitud=0x7f050045;
-        public static final int longitudeText=0x7f050041;
+        public static final int longitudeText=0x7f050043;
         public static final int middle=0x7f050013;
         public static final int never=0x7f05000b;
         public static final int none=0x7f050004;
