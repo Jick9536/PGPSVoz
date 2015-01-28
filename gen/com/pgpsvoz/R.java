@@ -1623,7 +1623,8 @@ containing a value of this type.
         public static final int abc_textfield_search_activated_mtrl_alpha=0x7f020030;
         public static final int abc_textfield_search_default_mtrl_alpha=0x7f020031;
         public static final int abc_textfield_search_material=0x7f020032;
-        public static final int ic_launcher=0x7f020033;
+        public static final int ic_compass=0x7f020033;
+        public static final int ic_launcher=0x7f020034;
     }
     public static final class id {
         public static final int action_bar=0x7f050031;
@@ -1648,6 +1649,7 @@ containing a value of this type.
         public static final int default_activity_button=0x7f050024;
         public static final int dialog=0x7f050010;
         public static final int disableHome=0x7f05000a;
+        public static final int distanceText=0x7f050042;
         public static final int dropdown=0x7f050011;
         public static final int edit_query=0x7f050033;
         public static final int end=0x7f050014;
@@ -1658,15 +1660,19 @@ containing a value of this type.
         public static final int icon=0x7f050026;
         public static final int ifRoom=0x7f05000c;
         public static final int image=0x7f050023;
-        public static final int latitud=0x7f050041;
+        public static final int imageViewCompass=0x7f050043;
+        public static final int latitud=0x7f050046;
+        public static final int latitudeText=0x7f050040;
         public static final int listMode=0x7f050002;
         public static final int list_item=0x7f050025;
-        public static final int lista_coordenadas=0x7f050042;
-        public static final int longitud=0x7f050040;
+        public static final int lista_coordenadas=0x7f050047;
+        public static final int longitud=0x7f050045;
+        public static final int longitudeText=0x7f050041;
         public static final int middle=0x7f050013;
         public static final int never=0x7f05000b;
         public static final int none=0x7f050004;
         public static final int normal=0x7f050001;
+        public static final int northDirection=0x7f05003f;
         public static final int progress_circular=0x7f05001c;
         public static final int progress_horizontal=0x7f05001d;
         public static final int radio=0x7f05002b;
@@ -1687,7 +1693,7 @@ containing a value of this type.
         public static final int split_action_bar=0x7f050019;
         public static final int submit_area=0x7f05003c;
         public static final int tabMode=0x7f050003;
-        public static final int textView1=0x7f05003f;
+        public static final int textView1=0x7f050044;
         public static final int title=0x7f050027;
         public static final int up=0x7f050016;
         public static final int useLogo=0x7f050005;
@@ -1743,10 +1749,15 @@ containing a value of this type.
         public static final int abc_search_dropdown_item_icons_2line=0x7f030014;
         public static final int abc_search_view=0x7f030015;
         public static final int abc_simple_dropdown_hint=0x7f030016;
-        public static final int activity_main_pgpsvoz=0x7f030017;
-        public static final int support_simple_spinner_dropdown_item=0x7f030018;
+        public static final int activity_main_navegacion=0x7f030017;
+        public static final int activity_main_pgpsvoz=0x7f030018;
+        public static final int support_simple_spinner_dropdown_item=0x7f030019;
+    }
+    public static final class menu {
+        public static final int menu_main=0x7f0c0000;
     }
     public static final class string {
+        public static final int Distance=0x7f0a0019;
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
          */
         public static final int abc_action_bar_home_description=0x7f0a0001;
@@ -1803,11 +1814,15 @@ containing a value of this type.
         /**  Content description for the Toolbar icon used to collapse an expanded action mode. [CHAR LIMIT=NONE] 
          */
         public static final int abc_toolbar_collapse_description=0x7f0a0004;
+        public static final int action_settings=0x7f0a0014;
         public static final int app_name=0x7f0a0010;
-        public static final int hello_world=0x7f0a0011;
-        public static final int latitud=0x7f0a0014;
-        public static final int longitud=0x7f0a0013;
-        public static final int tutorial=0x7f0a0012;
+        public static final int compassDescription=0x7f0a0017;
+        public static final int go=0x7f0a0018;
+        public static final int latitud=0x7f0a0013;
+        public static final int latitude=0x7f0a0016;
+        public static final int longitud=0x7f0a0012;
+        public static final int longitude=0x7f0a0015;
+        public static final int tutorial=0x7f0a0011;
     }
     public static final class style {
         /** 

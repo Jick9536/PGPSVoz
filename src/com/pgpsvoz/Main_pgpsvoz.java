@@ -20,23 +20,18 @@ import com.pgpsvoz.R;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
+
 import android.os.Build;
-import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
+
 
 public class Main_pgpsvoz extends Activity 
 {
@@ -64,6 +59,7 @@ public class Main_pgpsvoz extends Activity
 		//Shows in the GUI the default values for the language model and the maximum number of recognition results
 		setSpeakButtonLongitud();
 		setSpeakButtonLatitud();
+		
 	}
 	
 	private void listen()  
@@ -200,6 +196,7 @@ public class Main_pgpsvoz extends Activity
 	        longitud=nBestView.get(0);
 	    	ListView listView = (ListView) findViewById(R.id.lista_coordenadas);
 	    	listView.setAdapter(adapter);
+	    	
 	    	b_longitud=false;
 		}
 		else
@@ -211,6 +208,11 @@ public class Main_pgpsvoz extends Activity
 			    ListView listView = (ListView) findViewById(R.id.lista_coordenadas);
 			    listView.setAdapter(adapter);
 			    b_longitud=false;
+			    
+			    //No me cambia de activity??
+			    /*Intent i = new Intent(this, Main_navegacion.class);
+		        //i.putExtra(" ", " ");
+		        startActivity(i);*/
 			}
 		}
 		
