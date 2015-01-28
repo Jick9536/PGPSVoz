@@ -269,22 +269,22 @@ public class Main_pgpsvoz extends Activity
 					b_longitud=false;
 			    
 				}
-				else
-				{
-					if(coordenadas.get(0)!= "longitud" && coordenadas.get(1)!="latitud")
-					{
-						//Carga el activity al tener la latitud y longitud correctas
-						Intent i = new Intent(this, Main_navegacion.class);
-						i.putExtra(coordenadas.get(2),coordenadas.get(3));
-						coordenadas.add(longitud);
-						coordenadas.add(latitud);
-						coordenadas.add("0.0");
-						coordenadas.add("-0.0");
-						startActivity(i);
-					}
-				}
 			}
-	}
+		
+		//Comprobación para lanzar el activity
+		if(coordenadas.get(0)!= "longitud" && coordenadas.get(1)!="latitud")
+		{
+			//Carga el activity al tener la latitud y longitud correctas
+			Intent i = new Intent(this, Main_navegacion.class);
+			i.putExtra(coordenadas.get(2),coordenadas.get(3));
+			//reseteo
+			coordenadas.set(0,"longitud");
+			coordenadas.set(1,"latitud");
+			coordenadas.set(3,"0.0");
+			coordenadas.set(4,"-0.0");
+		//	startActivity(i);
+		}
+	}	
 }
 
 
