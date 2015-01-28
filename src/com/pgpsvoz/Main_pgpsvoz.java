@@ -65,6 +65,8 @@ public class Main_pgpsvoz extends Activity
 		setSpeakButtonLatitud();
 		coordenadas.add(longitud);
 		coordenadas.add(latitud);
+		coordenadas.add("0.0");
+		coordenadas.add("-0.0");
 		
 	}
 	
@@ -190,18 +192,41 @@ public class Main_pgpsvoz extends Activity
         }
 	}
 	
+	private float tranforma_grados_a_int(String coord)
+	{
+		float dec_coord;
+		String[] grados=coord.split("º");
+		String[] minutos=grados[1].split("'");
+		String[] segundos=minutos[1].split("''");
+		
+		float f_grados=Float.parseFloat(grados[0]);
+		float f_minutos=(Float.parseFloat(minutos[0])/60);
+		float f_segundos=(Float.parseFloat(segundos[0])/3600);
+	
+		dec_coord=f_grados+f_minutos+f_segundos;
+		if(coord.contains("W"))
+		{
+			dec_coord=dec_coord*(-1);
+		}
+		return dec_coord;
+		
+		
+	}
 	private String transforma_coordenadas(String cadena)
 	{
 		String aux;
 		//Cadena sin espacio
 		aux=cadena.replaceAll("coma", ".");
+		aux=aux.replaceAll("con",".");
 		aux=aux.replaceAll(",",".");
 		aux=aux.replaceAll("norte","N");
 		aux=aux.replaceAll("oeste", "W");
 		aux=aux.replaceAll("grados", "º");
 		aux=aux.replaceAll("grado", "º");
 		aux=aux.replaceAll("minutos", "'");
+		aux=aux.replaceAll("minuto", "'");
 		aux=aux.replaceAll("segundos", "''");
+		aux=aux.replaceAll("segundo", "''");
 		aux=aux.replaceAll(" " ,"");
 		aux=aux.trim();
 		return aux;
@@ -213,24 +238,14 @@ public class Main_pgpsvoz extends Activity
 	 */
 	private void setListView(ArrayList<String> nBestView)
 	{
-	
-		if(coordenadas.get(0)!= "longitud" && coordenadas.get(1)!="latitud")
-		{
-			//Carga el activity al tener la latitud y longitud correctas
-			Intent i = new Intent(this, Main_navegacion.class);
-			i.putExtra(longitud,latitud);
-			coordenadas.add(longitud);
-			coordenadas.add(latitud);
-			startActivity(i);
-		}
-		else
-		{
 			if(b_longitud==true)
 			{
 				// Instantiates the array adapter to populate the listView
 				//Transformar coordenadas al formato estandar
 				longitud=transforma_coordenadas(nBestView.get(1));
 				coordenadas.set(0, longitud);
+				coordenadas.set(2,Float.toString(tranforma_grados_a_int(longitud)));
+				
 			
 				ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, coordenadas);
 				ListView listView = (ListView) findViewById(R.id.lista_coordenadas);
@@ -245,6 +260,7 @@ public class Main_pgpsvoz extends Activity
 					//Transformar coordenadas al formato estandar
 					latitud=transforma_coordenadas(nBestView.get(0));
 					coordenadas.set(1, latitud);
+					coordenadas.set(3,Float.toString(tranforma_grados_a_int(latitud)));
 				
 					ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, coordenadas);
 				
@@ -253,8 +269,22 @@ public class Main_pgpsvoz extends Activity
 					b_longitud=false;
 			    
 				}
+				else
+				{
+					if(coordenadas.get(0)!= "longitud" && coordenadas.get(1)!="latitud")
+					{
+						//Carga el activity al tener la latitud y longitud correctas
+						Intent i = new Intent(this, Main_navegacion.class);
+						i.putExtra(coordenadas.get(2),coordenadas.get(3));
+						coordenadas.add(longitud);
+						coordenadas.add(latitud);
+						coordenadas.add("0.0");
+						coordenadas.add("-0.0");
+						startActivity(i);
+					}
+				}
 			}
-		}
 	}
 }
+
 
